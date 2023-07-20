@@ -2,7 +2,7 @@ import pygame
 from pygame.math import Vector2
 from Background import background
 #more lirary here if neededs 
-screen = pygame.display.set_mode((1920,1080))
+screen = pygame.display.set_mode((900,900))
 def main():
     pygame.init()
     pygame.display.set_caption("ACE")
