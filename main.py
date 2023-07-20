@@ -15,6 +15,7 @@ def main():
                 running = False
                 pygame.quit()
         screen.blit(background.sprite,(0,0))
+        
 
 
 if __name__ == "__name__":
