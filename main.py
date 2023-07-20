@@ -11,10 +11,7 @@ def main():
     running = True
     while running:
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.quit()
-        screen.blit(background().sprite,(0,0))
+           screen.blit(background().sprite,(0,0))
 
 if __name__ == "__name__":
     main()#run main sequence
