@@ -1,8 +1,16 @@
 import pygame
 from pygame.math import Vector2
 from Background import background
+from aceLOGO import Logo
+import math
 #more lirary here if neededs 
-screen = pygame.display.set_mode((900,900))
+screen = pygame.display.set_mode((1920,1080))
+ace = Logo()
+sped = ace.velocity
+acceleration = ace.acceleration
+pos = ace.position
+player_rect = pygame.Rect(pos.x, pos.y,ace.sprite.get_width(), ace.sprite.get_height())
+
 def main():
     pygame.init()
     pygame.display.set_caption("ACE")
@@ -14,7 +22,12 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
-        screen.blit(background.sprite,(0,0))
+        screen.blit(background().sprite,(0,0))
+        sped.x += acceleration
+        sped.y += acceleration
+        pos += sped
+        screen.blit(ace.sprite, (pos.x,pos.y))
+
         
 
 
