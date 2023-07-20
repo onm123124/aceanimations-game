@@ -1,35 +1,41 @@
+import os
 import pygame
 from pygame.math import Vector2
-from Background import background
 from aceLOGO import Logo
-import math
-#more lirary here if neededs 
-screen = pygame.display.set_mode((1920,1080))
+from Background import background  # Check the filename and correct it if needed
+
+pygame.init()
+screen_width, screen_height = 2560, 1664
+screen = pygame.display.set_mode((screen_width, screen_height))
+
 ace = Logo()
 sped = ace.velocity
 acceleration = ace.acceleration
 pos = ace.position
-player_rect = pygame.Rect(pos.x, pos.y,ace.sprite.get_width(), ace.sprite.get_height())
+logo_width, logo_height = ace.sprite.get_width(), ace.sprite.get_height()
+
+background_img = pygame.transform.scale(background().sprite, (screen_width, screen_height))
 
 def main():
-    pygame.init()
+    global pos  # Add this line to indicate that pos is a global variable
     pygame.display.set_caption("ACE")
-    #clean screen
-    pygame.display.update
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
-        screen.blit(background().sprite,(0,0))
+
+        screen.blit(background_img, (0, 0))
+
         sped.x += acceleration
         sped.y += acceleration
         pos += sped
-        screen.blit(ace.sprite, (pos.x,pos.y))
 
-        
+        # Center the ACE logo on the screen
+        x, y = pos.x - logo_width // 2, pos.y - logo_height // 2
+        screen.blit(ace.sprite, (x, y))
+        pygame.display.flip()  # Update the display
 
-
-if __name__ == "__name__":
-    main()#run main sequence
+if __name__ == "__main__":
+    main()  # Run the main sequence
