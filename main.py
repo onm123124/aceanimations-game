@@ -5,14 +5,14 @@ from aceLOGO import Logo
 from Background import background  # Check the filename and correct it if needed
 
 pygame.init()
-screen_width, screen_height = 2560, 1664
+screen_width, screen_height = 600, 800
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 ace = Logo()
 sped = ace.velocity
 acceleration = ace.acceleration
 pos = ace.position
-logo_width, logo_height = ace.sprite.get_width(), ace.sprite.get_height()
+logo_width, logo_height = ace.sprite.get_width()/2, ace.sprite.get_height()/2
 
 background_img = pygame.transform.scale(background().sprite, (screen_width, screen_height))
 
